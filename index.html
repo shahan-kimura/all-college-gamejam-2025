@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="オールカレッジ ゲームJAM 2025 全14校舎40作品成果発表サイト。">
+  <title>ALL COLLEGE GAME JAM 2025 — SHOWCASE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Video Background -->
+  <div class="video-bg-container">
+    <video class="video-bg" id="bgVideo" autoplay muted loop playsinline></video>
+  </div>
+  <div class="vignette-overlay"></div>
+
+  <!-- Mouse Reveal Layer -->
+  <div class="mouse-reveal-layer">
+    <video class="mouse-reveal-video" id="revealVideo" autoplay muted loop playsinline></video>
+  </div>
+
+  <!-- FUI HUD Overlay -->
+  <div class="fui-overlay" id="fuiOverlay">
+    <div class="fui-corner top-left">
+      SEC://ALL_COLLEGE_2025<br>
+      STATUS: <span id="fuiStatus">ACTIVE</span><br>
+      COORD: <span id="fuiCoord">X:0000 Y:0000</span>
+    </div>
+    <div class="fui-corner top-right">
+      FPS: <span id="fuiFps">60</span><br>
+      FRAME: <span id="fuiFrame">000000</span><br>
+      MODE: ALL_CAMPUSES_HUB
+    </div>
+    <div class="fui-corner bottom-left">
+      PROJECT: ALL COLLEGE GAME JAM 2025<br>
+      ENTRIES: 40 ACTIVE<br>
+      CAMPUSES: 14 CAMPUSES
+    </div>
+    <div class="fui-corner bottom-right">
+      IDLE: <span id="fuiIdle">00s</span>/30s<br>
+      <span id="fuiTime"></span>
+    </div>
+  </div>
+
+  <!-- Auto-switch progress bar -->
+  <div class="auto-switch-bar"></div>
+
+  <!-- Glitch Transition -->
+  <div class="glitch-overlay" id="glitchOverlay"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="nav-left-group">
+      <a href="index.html" class="nav-home-btn">★ ALL COLLEGE JAM</a>
+      <button class="drawer-trigger-btn" id="drawerTrigger">☰ 校舎別作品リスト (40作品)</button>
+    </div>
+  </nav>
+
+
+  <!-- Sidebar Drawer Backdrop & Aside -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="campus-sidebar" id="campusSidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">CAMPUS DIRECTORY</span>
+      <button class="sidebar-close-btn" id="drawerClose">[✕ 閉じる]</button>
+    </div>
+    <div class="sidebar-content">
+
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 秋葉原校</span>
+        <span class="campus-badge-count">7</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="akiba_01.html" class="sidebar-game-link" data-id="akiba_01">花火ニワトリ</a></li>
+        <li class="campus-game-item"><a href="akiba_02.html" class="sidebar-game-link" data-id="akiba_02">BomBlow</a></li>
+        <li class="campus-game-item"><a href="akiba_03.html" class="sidebar-game-link" data-id="akiba_03">BOMBERJUMPER</a></li>
+        <li class="campus-game-item"><a href="akiba_04.html" class="sidebar-game-link" data-id="akiba_04">にゃんばく (nyanbaku)</a></li>
+        <li class="campus-game-item"><a href="akiba_05.html" class="sidebar-game-link" data-id="akiba_05">LifeBomber</a></li>
+        <li class="campus-game-item"><a href="akiba_06.html" class="sidebar-game-link" data-id="akiba_06">バッケツドクター</a></li>
+        <li class="campus-game-item"><a href="akiba_07.html" class="sidebar-game-link" data-id="akiba_07">爆破解体進行中！</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 横浜校</span>
+        <span class="campus-badge-count">5</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="yokohama_01.html" class="sidebar-game-link" data-id="yokohama_01">鉄骨爆走 ―ファイナルロード―</a></li>
+        <li class="campus-game-item"><a href="yokohama_02.html" class="sidebar-game-link" data-id="yokohama_02">Bom Poppin' Popcorn</a></li>
+        <li class="campus-game-item"><a href="yokohama_03.html" class="sidebar-game-link" data-id="yokohama_03">株式会社カワムラ華火</a></li>
+        <li class="campus-game-item"><a href="yokohama_04.html" class="sidebar-game-link" data-id="yokohama_04">LJUE (Long Jump Using Explosion)</a></li>
+        <li class="campus-game-item"><a href="yokohama_05.html" class="sidebar-game-link" data-id="yokohama_05">ポップコーンフリッカー</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 大宮校</span>
+        <span class="campus-badge-count">4</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="oomiya_01.html" class="sidebar-game-link" data-id="oomiya_01">KnockBlast</a></li>
+        <li class="campus-game-item"><a href="oomiya_02.html" class="sidebar-game-link" data-id="oomiya_02">Sculpion</a></li>
+        <li class="campus-game-item"><a href="oomiya_03.html" class="sidebar-game-link" data-id="oomiya_03">爆発クライマー</a></li>
+        <li class="campus-game-item"><a href="oomiya_04.html" class="sidebar-game-link" data-id="oomiya_04">クイズクエスト</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 仙台校</span>
+        <span class="campus-badge-count">3</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="sendai_01.html" class="sidebar-game-link" data-id="sendai_01">ヴァルキリーアルカディア</a></li>
+        <li class="campus-game-item"><a href="sendai_02.html" class="sidebar-game-link" data-id="sendai_02">スパタコ sparklingtako</a></li>
+        <li class="campus-game-item"><a href="sendai_03.html" class="sidebar-game-link" data-id="sendai_03">DuoInko（デュオインコ）</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 大阪校</span>
+        <span class="campus-badge-count">3</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="osaka_01.html" class="sidebar-game-link" data-id="osaka_01">LOGIBOOM</a></li>
+        <li class="campus-game-item"><a href="osaka_02.html" class="sidebar-game-link" data-id="osaka_02">Bomb！Bomb！DASH！</a></li>
+        <li class="campus-game-item"><a href="osaka_03.html" class="sidebar-game-link" data-id="osaka_03">プラネットボム</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 名古屋校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="nagoya_01.html" class="sidebar-game-link" data-id="nagoya_01">BlowAway</a></li>
+        <li class="campus-game-item"><a href="nagoya_02.html" class="sidebar-game-link" data-id="nagoya_02">忍火 -しのびび-</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 札幌校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="sapporo_01.html" class="sidebar-game-link" data-id="sapporo_01">TALLYCARD</a></li>
+        <li class="campus-game-item"><a href="sapporo_02.html" class="sidebar-game-link" data-id="sapporo_02">KNUCKLE BOMB</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 那覇校</span>
+        <span class="campus-badge-count">3</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="naha_01.html" class="sidebar-game-link" data-id="naha_01">爆走 (BAKUSOU)</a></li>
+        <li class="campus-game-item"><a href="naha_02.html" class="sidebar-game-link" data-id="naha_02">プラネットエクスキューション</a></li>
+        <li class="campus-game-item"><a href="naha_03.html" class="sidebar-game-link" data-id="naha_03">POPorBOMM</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 鹿児島校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="kagoshima_01.html" class="sidebar-game-link" data-id="kagoshima_01">ハ花ナ火び (ハナビ)</a></li>
+        <li class="campus-game-item"><a href="kagoshima_02.html" class="sidebar-game-link" data-id="kagoshima_02">ムーブ・マインボンバー</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 神戸三宮校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="kobe_01.html" class="sidebar-game-link" data-id="kobe_01">Corrupted Zone</a></li>
+        <li class="campus-game-item"><a href="kobe_02.html" class="sidebar-game-link" data-id="kobe_02">OctaRipper</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 福岡校</span>
+        <span class="campus-badge-count">3</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="fukuoka_01.html" class="sidebar-game-link" data-id="fukuoka_01">まわして、ドカン！</a></li>
+        <li class="campus-game-item"><a href="fukuoka_02.html" class="sidebar-game-link" data-id="fukuoka_02">TOYBooM!</a></li>
+        <li class="campus-game-item"><a href="fukuoka_03.html" class="sidebar-game-link" data-id="fukuoka_03">退魔屋ハナビ</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 広島校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="hiroshima_01.html" class="sidebar-game-link" data-id="hiroshima_01">TO SNOWDROP EACH OTHER</a></li>
+        <li class="campus-game-item"><a href="hiroshima_02.html" class="sidebar-game-link" data-id="hiroshima_02">人気爆発！！地雷ちゃん</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 静岡校</span>
+        <span class="campus-badge-count">1</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="shizuoka_01.html" class="sidebar-game-link" data-id="shizuoka_01">BOOMBOX</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 京都校</span>
+        <span class="campus-badge-count">1</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="kyoto_01.html" class="sidebar-game-link" data-id="kyoto_01">LOVE♡BOMB</a></li>
+      </ul>
+    </div>
+    
+    </div>
+  </aside>
+
+
+  <!-- Page Content -->
+  <div class="page-container page-enter">
+    <section class="hero-section">
+      <!-- Title -->
+      <h1 class="site-title" id="siteTitle" data-text="ALL COLLEGE GAME JAM 2025">ALL COLLEGE GAME JAM 2025</h1>
+      <p class="site-subtitle" id="siteSubtitle">全国14校舎 ゲームカレッジ合同チーム制作成果発表展 // 全40作品</p>
+
+
+      <!-- Campus Filter Bar -->
+      <div class="filter-container">
+        <button class="filter-btn active" data-campus="all">ALL (40)</button>
+        <button class="filter-btn" data-campus="秋葉原校">秋葉原 (7)</button>
+        <button class="filter-btn" data-campus="横浜校">横浜 (5)</button>
+        <button class="filter-btn" data-campus="大宮校">大宮 (4)</button>
+        <button class="filter-btn" data-campus="仙台校">仙台 (3)</button>
+        <button class="filter-btn" data-campus="大阪校">大阪 (3)</button>
+        <button class="filter-btn" data-campus="名古屋校">名古屋 (2)</button>
+        <button class="filter-btn" data-campus="札幌校">札幌 (2)</button>
+        <button class="filter-btn" data-campus="那覇校">那覇 (3)</button>
+        <button class="filter-btn" data-campus="鹿児島校">鹿児島 (2)</button>
+        <button class="filter-btn" data-campus="神戸三宮校">神戸三宮 (2)</button>
+        <button class="filter-btn" data-campus="福岡校">福岡 (3)</button>
+        <button class="filter-btn" data-campus="広島校">広島 (2)</button>
+        <button class="filter-btn" data-campus="静岡校">静岡 (1)</button>
+        <button class="filter-btn" data-campus="京都校">京都 (1)</button>
+      </div>
+
+
+      <!-- Team Grid -->
+      <div class="team-grid" id="teamGrid">
+
+        <!-- Team Card: 花火ニワトリ -->
+        <a href="akiba_01.html" class="team-card" data-campus="秋葉原校">
+          <div class="team-card-badge">01</div>
+          <div class="team-card-campus">秋葉原校</div>
+          
+          <video class="team-card-thumbnail" src="akiba_01/background.mp4" poster="akiba_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">秋葉原校 · 爽快爆発アクション</span>
+            <h2 class="team-card-title">花火ニワトリ</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: BomBlow -->
+        <a href="akiba_02.html" class="team-card" data-campus="秋葉原校">
+          <div class="team-card-badge">02</div>
+          <div class="team-card-campus">秋葉原校</div>
+          
+          <video class="team-card-thumbnail" src="akiba_02/background.mp4" poster="akiba_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">秋葉原校 · 3D爆風アクション</span>
+            <h2 class="team-card-title">BomBlow</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: BOMBERJUMPER -->
+        <a href="akiba_03.html" class="team-card" data-campus="秋葉原校">
+          <div class="team-card-badge">03</div>
+          <div class="team-card-campus">秋葉原校</div>
+          
+          <video class="team-card-thumbnail" src="akiba_03/background.mp4" poster="akiba_03/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">秋葉原校 · ジャンプ＆ボムアクション</span>
+            <h2 class="team-card-title">BOMBERJUMPER</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: にゃんばく (nyanbaku) -->
+        <a href="akiba_04.html" class="team-card" data-campus="秋葉原校">
+          <div class="team-card-badge">04</div>
+          <div class="team-card-campus">秋葉原校</div>
+          
+          <video class="team-card-thumbnail" src="akiba_04/background.mp4" poster="akiba_04/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">秋葉原校 · 弾幕系サバイバルアクション</span>
+            <h2 class="team-card-title">にゃんばく (nyanbaku)</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: LifeBomber -->
+        <a href="akiba_05.html" class="team-card" data-campus="秋葉原校">
+          <div class="team-card-badge">05</div>
+          <div class="team-card-campus">秋葉原校</div>
+          
+          <video class="team-card-thumbnail" src="akiba_05/background.mp4" poster="akiba_05/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">秋葉原校 · 3Dアクションパズル</span>
+            <h2 class="team-card-title">LifeBomber</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: バッケツドクター -->
+        <a href="akiba_06.html" class="team-card" data-campus="秋葉原校">
+          <div class="team-card-badge">06</div>
+          <div class="team-card-campus">秋葉原校</div>
+          
+          <video class="team-card-thumbnail" src="akiba_06/background.mp4" poster="akiba_06/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">秋葉原校 · 爆発治療アクション</span>
+            <h2 class="team-card-title">バッケツドクター</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: 爆破解体進行中！ -->
+        <a href="akiba_07.html" class="team-card" data-campus="秋葉原校">
+          <div class="team-card-badge">07</div>
+          <div class="team-card-campus">秋葉原校</div>
+          
+          <video class="team-card-thumbnail" src="akiba_07/background.mp4" poster="akiba_07/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">秋葉原校 · ビル解体アクション</span>
+            <h2 class="team-card-title">爆破解体進行中！</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: 鉄骨爆走 ―ファイナルロード― -->
+        <a href="yokohama_01.html" class="team-card" data-campus="横浜校">
+          <div class="team-card-badge">08</div>
+          <div class="team-card-campus">横浜校</div>
+          
+          <video class="team-card-thumbnail" src="yokohama_01/background.mp4" poster="yokohama_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">横浜校 · デスロードランアクション</span>
+            <h2 class="team-card-title">鉄骨爆走 ―ファイナルロード―</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: Bom Poppin' Popcorn -->
+        <a href="yokohama_02.html" class="team-card" data-campus="横浜校">
+          <div class="team-card-badge">09</div>
+          <div class="team-card-campus">横浜校</div>
+          
+          <video class="team-card-thumbnail" src="yokohama_02/background.mp4" poster="yokohama_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">横浜校 · 2Dポップコーンフィーバー</span>
+            <h2 class="team-card-title">Bom Poppin' Popcorn</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: 株式会社カワムラ華火 -->
+        <a href="yokohama_03.html" class="team-card" data-campus="横浜校">
+          <div class="team-card-badge">10</div>
+          <div class="team-card-campus">横浜校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="yokohama_03/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">横浜校 · 打ち上げ花火ランゲーム · 企画書出展</span>
+            <h2 class="team-card-title">株式会社カワムラ華火</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: LJUE (Long Jump Using Explosion) -->
+        <a href="yokohama_04.html" class="team-card" data-campus="横浜校">
+          <div class="team-card-badge">11</div>
+          <div class="team-card-campus">横浜校</div>
+          
+          <video class="team-card-thumbnail" src="yokohama_04/background.mp4" poster="yokohama_04/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">横浜校 · 爆風ジャンプアクション</span>
+            <h2 class="team-card-title">LJUE (Long Jump Using Explosion)</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: ポップコーンフリッカー -->
+        <a href="yokohama_05.html" class="team-card" data-campus="横浜校">
+          <div class="team-card-badge">12</div>
+          <div class="team-card-campus">横浜校</div>
+          
+          <video class="team-card-thumbnail" src="yokohama_05/background.mp4" poster="yokohama_05/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">横浜校 · フリックアクション</span>
+            <h2 class="team-card-title">ポップコーンフリッカー</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: KnockBlast -->
+        <a href="oomiya_01.html" class="team-card" data-campus="大宮校">
+          <div class="team-card-badge">13</div>
+          <div class="team-card-campus">大宮校</div>
+          
+          <video class="team-card-thumbnail" src="oomiya_01/background.mp4" poster="oomiya_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">大宮校 · 3Dふき飛ばし対戦ゲーム</span>
+            <h2 class="team-card-title">KnockBlast</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: Sculpion -->
+        <a href="oomiya_02.html" class="team-card" data-campus="大宮校">
+          <div class="team-card-badge">14</div>
+          <div class="team-card-campus">大宮校</div>
+          
+          <video class="team-card-thumbnail" src="oomiya_02/background.mp4" poster="oomiya_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">大宮校 · 3Dアクションパズル</span>
+            <h2 class="team-card-title">Sculpion</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: 爆発クライマー -->
+        <a href="oomiya_03.html" class="team-card" data-campus="大宮校">
+          <div class="team-card-badge">15</div>
+          <div class="team-card-campus">大宮校</div>
+          
+          <video class="team-card-thumbnail" src="oomiya_03/background.mp4" poster="oomiya_03/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">大宮校 · 2D3Dクライミングアクション</span>
+            <h2 class="team-card-title">爆発クライマー</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: クイズクエスト -->
+        <a href="oomiya_04.html" class="team-card" data-campus="大宮校">
+          <div class="team-card-badge">16</div>
+          <div class="team-card-campus">大宮校</div>
+          
+          <video class="team-card-thumbnail" src="oomiya_04/background.mp4" poster="oomiya_04/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">大宮校 · クイズバトルRPG</span>
+            <h2 class="team-card-title">クイズクエスト</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: ヴァルキリーアルカディア -->
+        <a href="sendai_01.html" class="team-card" data-campus="仙台校">
+          <div class="team-card-badge">17</div>
+          <div class="team-card-campus">仙台校</div>
+          
+          <video class="team-card-thumbnail" src="sendai_01/background.mp4" poster="sendai_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">仙台校 · ランアクション</span>
+            <h2 class="team-card-title">ヴァルキリーアルカディア</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: スパタコ sparklingtako -->
+        <a href="sendai_02.html" class="team-card" data-campus="仙台校">
+          <div class="team-card-badge">18</div>
+          <div class="team-card-campus">仙台校</div>
+          
+          <video class="team-card-thumbnail" src="sendai_02/background.mp4" poster="sendai_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">仙台校 · 爆破アクション</span>
+            <h2 class="team-card-title">スパタコ sparklingtako</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: DuoInko（デュオインコ） -->
+        <a href="sendai_03.html" class="team-card" data-campus="仙台校">
+          <div class="team-card-badge">19</div>
+          <div class="team-card-campus">仙台校</div>
+          
+          <video class="team-card-thumbnail" src="sendai_03/background.mp4" poster="sendai_03/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">仙台校 · 協力2Dアクション</span>
+            <h2 class="team-card-title">DuoInko（デュオインコ）</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: LOGIBOOM -->
+        <a href="osaka_01.html" class="team-card" data-campus="大阪校">
+          <div class="team-card-badge">20</div>
+          <div class="team-card-campus">大阪校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="osaka_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">大阪校 · 2Dパズルアクション · 企画書出展</span>
+            <h2 class="team-card-title">LOGIBOOM</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: Bomb！Bomb！DASH！ -->
+        <a href="osaka_02.html" class="team-card" data-campus="大阪校">
+          <div class="team-card-badge">21</div>
+          <div class="team-card-campus">大阪校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="osaka_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">大阪校 · 爆発2Dランゲーム · 企画書出展</span>
+            <h2 class="team-card-title">Bomb！Bomb！DASH！</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: プラネットボム -->
+        <a href="osaka_03.html" class="team-card" data-campus="大阪校">
+          <div class="team-card-badge">22</div>
+          <div class="team-card-campus">大阪校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="osaka_03/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">大阪校 · 惑星爆破アクション · 企画書出展</span>
+            <h2 class="team-card-title">プラネットボム</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: BlowAway -->
+        <a href="nagoya_01.html" class="team-card" data-campus="名古屋校">
+          <div class="team-card-badge">23</div>
+          <div class="team-card-campus">名古屋校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="nagoya_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">名古屋校 · 3D爆破アクション · 企画書出展</span>
+            <h2 class="team-card-title">BlowAway</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: 忍火 -しのびび- -->
+        <a href="nagoya_02.html" class="team-card" data-campus="名古屋校">
+          <div class="team-card-badge">24</div>
+          <div class="team-card-campus">名古屋校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="nagoya_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">名古屋校 · 見下ろし型忍対戦アクション · 企画書出展</span>
+            <h2 class="team-card-title">忍火 -しのびび-</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: TALLYCARD -->
+        <a href="sapporo_01.html" class="team-card" data-campus="札幌校">
+          <div class="team-card-badge">25</div>
+          <div class="team-card-campus">札幌校</div>
+          
+          <video class="team-card-thumbnail" src="sapporo_01/background.mp4" poster="sapporo_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">札幌校 · 心理爆弾カードバトル</span>
+            <h2 class="team-card-title">TALLYCARD</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: KNUCKLE BOMB -->
+        <a href="sapporo_02.html" class="team-card" data-campus="札幌校">
+          <div class="team-card-badge">26</div>
+          <div class="team-card-campus">札幌校</div>
+          
+          <video class="team-card-thumbnail" src="sapporo_02/background.mp4" poster="sapporo_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">札幌校 · ジャンプ＆パンチアクション</span>
+            <h2 class="team-card-title">KNUCKLE BOMB</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: 爆走 (BAKUSOU) -->
+        <a href="naha_01.html" class="team-card" data-campus="那覇校">
+          <div class="team-card-badge">27</div>
+          <div class="team-card-campus">那覇校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="naha_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">那覇校 · ハイスピードドライビング · 企画書出展</span>
+            <h2 class="team-card-title">爆走 (BAKUSOU)</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: プラネットエクスキューション -->
+        <a href="naha_02.html" class="team-card" data-campus="那覇校">
+          <div class="team-card-badge">28</div>
+          <div class="team-card-campus">那覇校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="naha_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">那覇校 · スペースシューティング · 企画書出展</span>
+            <h2 class="team-card-title">プラネットエクスキューション</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: POPorBOMM -->
+        <a href="naha_03.html" class="team-card" data-campus="那覇校">
+          <div class="team-card-badge">29</div>
+          <div class="team-card-campus">那覇校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="naha_03/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">那覇校 · ポップパズルアクション · 企画書出展</span>
+            <h2 class="team-card-title">POPorBOMM</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: ハ花ナ火び (ハナビ) -->
+        <a href="kagoshima_01.html" class="team-card" data-campus="鹿児島校">
+          <div class="team-card-badge">30</div>
+          <div class="team-card-campus">鹿児島校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="kagoshima_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">鹿児島校 · 夜空の花火アクション · 企画書出展</span>
+            <h2 class="team-card-title">ハ花ナ火び (ハナビ)</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: ムーブ・マインボンバー -->
+        <a href="kagoshima_02.html" class="team-card" data-campus="鹿児島校">
+          <div class="team-card-badge">31</div>
+          <div class="team-card-campus">鹿児島校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="kagoshima_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">鹿児島校 · 地雷探索アクション · 企画書出展</span>
+            <h2 class="team-card-title">ムーブ・マインボンバー</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: Corrupted Zone -->
+        <a href="kobe_01.html" class="team-card" data-campus="神戸三宮校">
+          <div class="team-card-badge">32</div>
+          <div class="team-card-campus">神戸三宮校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="kobe_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">神戸三宮校 · サバイバルFPS · 企画書出展</span>
+            <h2 class="team-card-title">Corrupted Zone</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: OctaRipper -->
+        <a href="kobe_02.html" class="team-card" data-campus="神戸三宮校">
+          <div class="team-card-badge">33</div>
+          <div class="team-card-campus">神戸三宮校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="kobe_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">神戸三宮校 · 近未来アリーナバトル · 企画書出展</span>
+            <h2 class="team-card-title">OctaRipper</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: まわして、ドカン！ -->
+        <a href="fukuoka_01.html" class="team-card" data-campus="福岡校">
+          <div class="team-card-badge">34</div>
+          <div class="team-card-campus">福岡校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="fukuoka_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">福岡校 · 回転ギミック爆破アクション · 企画書出展</span>
+            <h2 class="team-card-title">まわして、ドカン！</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: TOYBooM! -->
+        <a href="fukuoka_02.html" class="team-card" data-campus="福岡校">
+          <div class="team-card-badge">35</div>
+          <div class="team-card-campus">福岡校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="fukuoka_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">福岡校 · 読み合いトイマスゲーム · 企画書出展</span>
+            <h2 class="team-card-title">TOYBooM!</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: 退魔屋ハナビ -->
+        <a href="fukuoka_03.html" class="team-card" data-campus="福岡校">
+          <div class="team-card-badge">36</div>
+          <div class="team-card-campus">福岡校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="fukuoka_03/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">福岡校 · 2Dハナビシューティング · 企画書出展</span>
+            <h2 class="team-card-title">退魔屋ハナビ</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: TO SNOWDROP EACH OTHER -->
+        <a href="hiroshima_01.html" class="team-card" data-campus="広島校">
+          <div class="team-card-badge">37</div>
+          <div class="team-card-campus">広島校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="hiroshima_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">広島校 · 対戦型タクティカルボード · 企画書出展</span>
+            <h2 class="team-card-title">TO SNOWDROP EACH OTHER</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: 人気爆発！！地雷ちゃん -->
+        <a href="hiroshima_02.html" class="team-card" data-campus="広島校">
+          <div class="team-card-badge">38</div>
+          <div class="team-card-campus">広島校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="hiroshima_02/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">広島校 · アンチコメント爆破アクション · 企画書出展</span>
+            <h2 class="team-card-title">人気爆発！！地雷ちゃん</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: BOOMBOX -->
+        <a href="shizuoka_01.html" class="team-card" data-campus="静岡校">
+          <div class="team-card-badge">39</div>
+          <div class="team-card-campus">静岡校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="shizuoka_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">静岡校 · 横スクロール2Dアクション · 企画書出展</span>
+            <h2 class="team-card-title">BOOMBOX</h2>
+          </div>
+        </a>
+
+        <!-- Team Card: LOVE♡BOMB -->
+        <a href="kyoto_01.html" class="team-card" data-campus="京都校">
+          <div class="team-card-badge">40</div>
+          <div class="team-card-campus">京都校</div>
+          <span class="no-pv-tag">NO PV</span>
+          <video class="team-card-thumbnail" src="shared/no_reference.mp4" poster="kyoto_01/thumbnail.jpg" muted loop playsinline preload="none"></video>
+          <div class="team-card-overlay">
+            <span class="team-card-genre">京都校 · アクション×タワーディフェンス · 企画書出展</span>
+            <h2 class="team-card-title">LOVE♡BOMB</h2>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </div>
+
+  <footer class="showcase-footer">
+    <p>© 2025-2026 HUMAN ACADEMY GAME COLLEGE — ALL COLLEGE GAME JAM</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      GCKPortfolio.init({
+        pageType: 'index',
+        videos: [
+          'akiba_01/background.mp4',
+          'yokohama_01/background.mp4',
+          'oomiya_01/background.mp4',
+          'sendai_01/background.mp4'
+        ]
+      });
+    });
+  </script>
+</body>
+</html>

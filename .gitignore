@@ -1,0 +1,9 @@
+# Private audit materials and source archives must stay outside the public site.
+.private/
+*.zip
+*.tmp
+*.tmp.*
+*.bak
+*.orig
+.DS_Store
+Thumbs.db

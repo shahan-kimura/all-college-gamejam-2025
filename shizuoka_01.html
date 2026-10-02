@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>静岡校 — BOOMBOX | ALL COLLEGE GAME JAM 2025</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Full Screen Background Video -->
+  <div class="video-bg-container">
+    <video class="video-bg" id="bgVideo" autoplay muted loop playsinline></video>
+  </div>
+  <div class="vignette-overlay"></div>
+  <div class="mouse-reveal-layer">
+    <video class="mouse-reveal-video" id="revealVideo" autoplay muted loop playsinline></video>
+  </div>
+
+  <!-- FUI Overlay -->
+  <div class="fui-overlay" id="fuiOverlay">
+    <div class="fui-corner top-left">SYS://COLLEGE_2025<br>STATUS: <span id="fuiStatus">ACTIVE</span><br>COORD: <span id="fuiCoord">X:0000 Y:0000</span></div>
+    <div class="fui-corner top-right">FPS: <span id="fuiFps">60</span><br>FRAME: <span id="fuiFrame">000000</span><br>MODE: ENTRY_VIEW</div>
+    <div class="fui-corner bottom-left">CAMPUS: 静岡校<br>TITLE: BOOMBOX<br>STREAM: <span style="color:var(--color-cyan)">ARCHIVE_ONLY</span></div>
+    <div class="fui-corner bottom-right">IDLE: <span id="fuiIdle">00s</span>/30s<br><span id="fuiTime"></span></div>
+  </div>
+
+  <!-- Glitch -->
+  <div class="glitch-overlay" id="glitchOverlay"></div>
+
+  <!-- Auto-switch bar -->
+  <div class="auto-switch-bar"></div>
+
+  <!-- Nav Bar with Drawer Trigger -->
+  <nav class="nav-bar">
+    <div class="nav-left-group">
+      <a href="index.html" class="nav-home-btn">← ALL ENTRIES</a>
+      <button class="drawer-trigger-btn" id="drawerTrigger">☰ 校舎別作品リスト (40作品)</button>
+    </div>
+  </nav>
+
+
+  <!-- Sidebar Drawer Backdrop & Aside -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="campus-sidebar" id="campusSidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">CAMPUS DIRECTORY</span>
+      <button class="sidebar-close-btn" id="drawerClose">[✕ 閉じる]</button>
+    </div>
+    <div class="sidebar-content">
+
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 秋葉原校</span>
+        <span class="campus-badge-count">7</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="akiba_01.html" class="sidebar-game-link" data-id="akiba_01">花火ニワトリ</a></li>
+        <li class="campus-game-item"><a href="akiba_02.html" class="sidebar-game-link" data-id="akiba_02">BomBlow</a></li>
+        <li class="campus-game-item"><a href="akiba_03.html" class="sidebar-game-link" data-id="akiba_03">BOMBERJUMPER</a></li>
+        <li class="campus-game-item"><a href="akiba_04.html" class="sidebar-game-link" data-id="akiba_04">にゃんばく (nyanbaku)</a></li>
+        <li class="campus-game-item"><a href="akiba_05.html" class="sidebar-game-link" data-id="akiba_05">LifeBomber</a></li>
+        <li class="campus-game-item"><a href="akiba_06.html" class="sidebar-game-link" data-id="akiba_06">バッケツドクター</a></li>
+        <li class="campus-game-item"><a href="akiba_07.html" class="sidebar-game-link" data-id="akiba_07">爆破解体進行中！</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 横浜校</span>
+        <span class="campus-badge-count">5</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="yokohama_01.html" class="sidebar-game-link" data-id="yokohama_01">鉄骨爆走 ―ファイナルロード―</a></li>
+        <li class="campus-game-item"><a href="yokohama_02.html" class="sidebar-game-link" data-id="yokohama_02">Bom Poppin' Popcorn</a></li>
+        <li class="campus-game-item"><a href="yokohama_03.html" class="sidebar-game-link" data-id="yokohama_03">株式会社カワムラ華火</a></li>
+        <li class="campus-game-item"><a href="yokohama_04.html" class="sidebar-game-link" data-id="yokohama_04">LJUE (Long Jump Using Explosion)</a></li>
+        <li class="campus-game-item"><a href="yokohama_05.html" class="sidebar-game-link" data-id="yokohama_05">ポップコーンフリッカー</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 大宮校</span>
+        <span class="campus-badge-count">4</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="oomiya_01.html" class="sidebar-game-link" data-id="oomiya_01">KnockBlast</a></li>
+        <li class="campus-game-item"><a href="oomiya_02.html" class="sidebar-game-link" data-id="oomiya_02">Sculpion</a></li>
+        <li class="campus-game-item"><a href="oomiya_03.html" class="sidebar-game-link" data-id="oomiya_03">爆発クライマー</a></li>
+        <li class="campus-game-item"><a href="oomiya_04.html" class="sidebar-game-link" data-id="oomiya_04">クイズクエスト</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 仙台校</span>
+        <span class="campus-badge-count">3</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="sendai_01.html" class="sidebar-game-link" data-id="sendai_01">ヴァルキリーアルカディア</a></li>
+        <li class="campus-game-item"><a href="sendai_02.html" class="sidebar-game-link" data-id="sendai_02">スパタコ sparklingtako</a></li>
+        <li class="campus-game-item"><a href="sendai_03.html" class="sidebar-game-link" data-id="sendai_03">DuoInko（デュオインコ）</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 大阪校</span>
+        <span class="campus-badge-count">3</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="osaka_01.html" class="sidebar-game-link" data-id="osaka_01">LOGIBOOM</a></li>
+        <li class="campus-game-item"><a href="osaka_02.html" class="sidebar-game-link" data-id="osaka_02">Bomb！Bomb！DASH！</a></li>
+        <li class="campus-game-item"><a href="osaka_03.html" class="sidebar-game-link" data-id="osaka_03">プラネットボム</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 名古屋校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="nagoya_01.html" class="sidebar-game-link" data-id="nagoya_01">BlowAway</a></li>
+        <li class="campus-game-item"><a href="nagoya_02.html" class="sidebar-game-link" data-id="nagoya_02">忍火 -しのびび-</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 札幌校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="sapporo_01.html" class="sidebar-game-link" data-id="sapporo_01">TALLYCARD</a></li>
+        <li class="campus-game-item"><a href="sapporo_02.html" class="sidebar-game-link" data-id="sapporo_02">KNUCKLE BOMB</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 那覇校</span>
+        <span class="campus-badge-count">3</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="naha_01.html" class="sidebar-game-link" data-id="naha_01">爆走 (BAKUSOU)</a></li>
+        <li class="campus-game-item"><a href="naha_02.html" class="sidebar-game-link" data-id="naha_02">プラネットエクスキューション</a></li>
+        <li class="campus-game-item"><a href="naha_03.html" class="sidebar-game-link" data-id="naha_03">POPorBOMM</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 鹿児島校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="kagoshima_01.html" class="sidebar-game-link" data-id="kagoshima_01">ハ花ナ火び (ハナビ)</a></li>
+        <li class="campus-game-item"><a href="kagoshima_02.html" class="sidebar-game-link" data-id="kagoshima_02">ムーブ・マインボンバー</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 神戸三宮校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="kobe_01.html" class="sidebar-game-link" data-id="kobe_01">Corrupted Zone</a></li>
+        <li class="campus-game-item"><a href="kobe_02.html" class="sidebar-game-link" data-id="kobe_02">OctaRipper</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 福岡校</span>
+        <span class="campus-badge-count">3</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="fukuoka_01.html" class="sidebar-game-link" data-id="fukuoka_01">まわして、ドカン！</a></li>
+        <li class="campus-game-item"><a href="fukuoka_02.html" class="sidebar-game-link" data-id="fukuoka_02">TOYBooM!</a></li>
+        <li class="campus-game-item"><a href="fukuoka_03.html" class="sidebar-game-link" data-id="fukuoka_03">退魔屋ハナビ</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 広島校</span>
+        <span class="campus-badge-count">2</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="hiroshima_01.html" class="sidebar-game-link" data-id="hiroshima_01">TO SNOWDROP EACH OTHER</a></li>
+        <li class="campus-game-item"><a href="hiroshima_02.html" class="sidebar-game-link" data-id="hiroshima_02">人気爆発！！地雷ちゃん</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 静岡校</span>
+        <span class="campus-badge-count">1</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="shizuoka_01.html" class="sidebar-game-link" data-id="shizuoka_01">BOOMBOX</a></li>
+      </ul>
+    </div>
+    
+    <div class="campus-group">
+      <div class="campus-group-title">
+        <span>🏫 京都校</span>
+        <span class="campus-badge-count">1</span>
+      </div>
+      <ul class="campus-game-list">
+        <li class="campus-game-item"><a href="kyoto_01.html" class="sidebar-game-link" data-id="kyoto_01">LOVE♡BOMB</a></li>
+      </ul>
+    </div>
+    
+    </div>
+  </aside>
+
+
+  <!-- Page Content -->
+  <div class="page-container page-enter">
+    <section class="team-header">
+      <div class="team-num-display">39</div>
+
+      <div class="team-campus-tag" id="campusTag">静岡校</div>
+      <h1 class="team-name" id="teamName">BOOMBOX</h1>
+      <h2 class="team-work-title" id="workTitle">横スクロール2Dアクション</h2>
+      <p class="team-concept" id="teamConcept">ビートに合わせてボムを投下！リズミカルな破壊と音楽が心地よい2D横スクロールアクション！</p>
+
+      <div class="action-buttons">
+        <button class="action-btn" onclick="openModal('proposal')">VIEW PROFILE (PDF)</button>
+        <button class="action-btn secondary no-video-btn" onclick="openModal('noVideo')" style="border-color:#555;color:#aaa;">NO PV ARCHIVED</button>
+        <a class="action-btn download" id="downloadBtn" href="https://drive.google.com/file/d/1EP6w3mw2jpRieo9GVCpDZFQ0N0_r-GJu/view?usp=drivesdk" target="_blank" rel="noopener">DOWNLOAD GAME IN DRIVE</a>
+      </div>
+
+      <div class="prev-next-nav">
+        <a href="hiroshima_02.html" class="prev-next-btn" id="prevTeamBtn">← PREV</a>
+        <a href="kyoto_01.html" class="prev-next-btn" id="nextTeamBtn">NEXT →</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Proposal Modal (Clean View, Hybrid PDF & Offline Slides) -->
+  <div class="modal-overlay" id="proposalModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span>PROFILE — 静岡校 BOOMBOX</span>
+        <div class="modal-header-actions">
+          <button class="modal-tab-btn active" id="tabPdf" onclick="setProposalViewMode('pdf')">PDF</button>
+          <button class="modal-tab-btn" id="tabSlides" onclick="setProposalViewMode('slides')">SLIDES</button>
+          <button class="modal-close" onclick="closeModal()">[ CLOSE ]</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <iframe id="proposalIframe" data-src="shizuoka_01/proposal.pdf#toolbar=0&view=FitH" width="100%" height="100%" style="border:none;"></iframe>
+        <div class="slide-viewer-box" id="proposalSlidesViewer" style="display:none;">
+          <div class="slide-img-wrap">
+            <img id="slideImage" data-src="shizuoka_01/pages/page_1.jpg" alt="Profile Slide">
+          </div>
+          <div class="slide-controls">
+            <button class="slide-btn" onclick="changeSlide(-1)">◀ PREV</button>
+            <span id="slideCounter">PAGE 1 / 5</span>
+            <button class="slide-btn" onclick="changeSlide(1)">NEXT ▶</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Modal (Clean View) -->
+  <div class="modal-overlay" id="videoModal">
+    <div class="modal-content" style="background:#000;">
+      <div class="modal-header">
+        <span>PV / DEMO — 静岡校 BOOMBOX</span>
+        <button class="modal-close" onclick="closeModal()">[ CLOSE ]</button>
+      </div>
+      <div class="modal-body">
+        <video data-src="shared/no_reference.mp4" preload="none" controls style="width:100%;height:100%;background:#000;"></video>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Video Modal (For teams without video archive) -->
+  <div class="modal-overlay" id="noVideoModal">
+    <div class="modal-content" style="max-width:540px;background:#0d0d14;border:3px solid var(--color-cyan);box-shadow:8px 8px 0 #000;padding:28px;text-align:center;">
+      <div style="font-family:var(--font-mono);color:var(--color-cyan);font-size:0.8rem;letter-spacing:2px;margin-bottom:8px;">// ARCHIVE DATA NOTICE //</div>
+      <h3 style="font-family:var(--font-display);color:var(--color-primary);font-size:1.3rem;margin-bottom:14px;">NO VIDEO FOOTAGE</h3>
+      <p style="color:#ddd;font-size:0.88rem;line-height:1.7;margin-bottom:24px;text-align:left;">
+        本作『BOOMBOX』は実機動画のアーカイブが存在しないため、他作品との混同を防ぐ目的でプレイ動画の再生を制限しております。<br><br>
+        ゲームの詳しい企画・仕様については<strong>「VIEW PROFILE (PDF)」</strong>をご確認ください。ゲームビルドが公開されている作品は、作品ページの「DOWNLOAD GAME IN DRIVE」からGoogle Driveに移動できます。
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;">
+        <button class="action-btn" onclick="closeModal(); openModal('proposal');">VIEW PROFILE</button>
+        <button class="action-btn secondary" onclick="closeModal()">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      GCKPortfolio.init({
+        pageType: 'team',
+        videos: ['shared/no_reference.mp4'],
+        currentTeam: 'shizuoka_01'
+      });
+    });
+  </script>
+</body>
+</html>
